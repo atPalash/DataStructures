@@ -127,6 +127,18 @@ private:
     // Add stuff needed for your class implementation here
     std::map<TownID,TownData> town_list_;
     std::vector<TownID> vec_town_list_;
+    std::multimap<TownID,TownData> alpha_town_list_;
+    std::vector<TownID> alpha_town_vec_;
+    std::multimap<int,TownData> dist_town_list_;
+    std::vector<TownID> dist_town_vec_;
+    std::vector<TownID> town_taxer_path_;
+    std::vector<TownID> town_vassal_path_;
+//    int total_tax_ = 0;
+    bool dist_flag_ = false;
+
+    void find_master_(TownID const& town_id);
+    void find_vassal_(TownID const& town_id);
+    int find_net_tax_(TownID const& town_id);
 };
 
 #endif // DATASTRUCTURES_HH
