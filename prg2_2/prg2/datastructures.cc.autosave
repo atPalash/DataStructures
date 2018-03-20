@@ -215,15 +215,15 @@ TownID Datastructures::nth_distance(unsigned int n)
       if (dist_flag_){
           return dist_town_vec_[0];
       }
-      else{
-          dist_town_vec_.clear();
-          dist_town_vec_.reserve(dist_town_list_.size());
-          for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
-              dist_town_vec_.push_back(itr->second.id_);
-          }
-          dist_flag_ = true;
-          return dist_town_vec_[dist_town_vec_.size() - 1];
-      }
+//      else{
+//          dist_town_vec_.clear();
+//          dist_town_vec_.reserve(dist_town_list_.size());
+//          for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
+//              dist_town_vec_.push_back(itr->second.id_);
+//          }
+//          dist_flag_ = true;
+//          return dist_town_vec_[dist_town_vec_.size() - 1];
+//      }
     }
 //    if(dist_town_list_.size()!=0 && n<dist_town_list_.size() && n!=0){
 //        if(dist_flag_){

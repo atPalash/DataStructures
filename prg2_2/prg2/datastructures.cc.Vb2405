@@ -178,8 +178,7 @@ TownID Datastructures::min_distance()
           return dist_town_vec_[0];
       }
       else{
-          dist_town_vec_.clear();
-          dist_town_vec_.reserve(dist_town_list_.size());
+
           for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
               dist_town_vec_.push_back(itr->second.id_);
           }
@@ -192,46 +191,28 @@ TownID Datastructures::min_distance()
 
 TownID Datastructures::max_distance()
 {
-    if(dist_town_list_.size()!=0){
-      if (dist_flag_){
-          return dist_town_vec_[dist_town_vec_.size() - 1];
-      }
-      else{
-          dist_town_vec_.clear();
-          dist_town_vec_.reserve(dist_town_list_.size());
-          for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
-              dist_town_vec_.push_back(itr->second.id_);
-          }
-          dist_flag_ = true;
-          return dist_town_vec_[dist_town_vec_.size() - 1];
-      }
-    }
+//    if(dist_town_list_.size()!=0){
+//      if (dist_flag_){
+//          return dist_town_vec_[dist_town_vec_.size() - 1];
+//      }
+//      else{
+//          for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
+//              dist_town_vec_.push_back(itr->second.id_);
+//          }
+//          dist_flag_ = true;
+//          return dist_town_vec_[dist_town_vec_.size() - 1];
+//      }
+//    }
     return NO_ID; // Replace with actual implementation
 }
 
 TownID Datastructures::nth_distance(unsigned int n)
 {
-    if((dist_town_list_.size()!=0) && (n<dist_town_list_.size() && (n!=0))){
-      if (dist_flag_){
-          return dist_town_vec_[0];
-      }
-      else{
-          dist_town_vec_.clear();
-          dist_town_vec_.reserve(dist_town_list_.size());
-          for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
-              dist_town_vec_.push_back(itr->second.id_);
-          }
-          dist_flag_ = true;
-          return dist_town_vec_[dist_town_vec_.size() - 1];
-      }
-    }
-//    if(dist_town_list_.size()!=0 && n<dist_town_list_.size() && n!=0){
+//    if(n!=0 && n<dist_town_list_.size()){
 //        if(dist_flag_){
 //            return dist_town_vec_[n-1];
 //        }
 //        else{
-//            dist_town_vec_.clear();
-//            dist_town_vec_.reserve(dist_town_list_.size());
 //            for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
 //                dist_town_vec_.push_back(itr->second.id_);
 //            }
@@ -250,8 +231,6 @@ std::vector<TownID> Datastructures::towns_distance_increasing_from(int x, int y)
 //                return dist_town_vec_;
 //            }
 //            else{
-//              dist_town_vec_.clear();
-//              dist_town_vec_.reserve(dist_town_list_.size());
 //              for(auto itr = dist_town_list_.begin(); itr != dist_town_list_.end(); ++itr){
 //                  dist_town_vec_.push_back(itr->second.id_);
 //              }
@@ -262,8 +241,6 @@ std::vector<TownID> Datastructures::towns_distance_increasing_from(int x, int y)
 //        else{
 //            std::multimap<int, TownID> dist_town_xy_map;
 //            std::vector<TownID> dist_town_xy_vec;
-//            dist_town_xy_vec.clear();
-//            dist_town_xy_vec.reserve(dist_town_list_.size());
 //            for(auto itr = town_list_.begin(); itr != town_list_.end(); ++itr){
 //                int dist_xy = abs(itr->second.x_ - x)+ abs(itr->second.y_ - y);
 //                dist_town_xy_map.insert(std::pair<int,TownID>(dist_xy, itr->first));

@@ -186,6 +186,7 @@ DIST          = /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		../prg2/.qmake.stash \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -350,6 +351,7 @@ Makefile: ../prg2/prg2.pro /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qma
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -503,6 +505,7 @@ Makefile: ../prg2/prg2.pro /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qma
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf:
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf:
 /home/palash/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf:
@@ -823,11 +826,74 @@ mainwindow.o: ../prg2/mainwindow.cc ../prg2/mainprogram.hh \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		ui_mainwindow.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QCheckBox \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QComboBox \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qcombobox.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDoubleSpinBox \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qspinbox.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLineEdit \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextformat.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPlainTextEdit \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qplaintextedit.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextlayout.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qglyphrun.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qrawfont.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontdatabase.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QSpacerItem \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QSplitter \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsplitter.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QToolButton \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtoolbutton.h \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
+		/home/palash/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../prg2/mainwindow.cc
 
 mainprogram.o: ../prg2/mainprogram.cc ../prg2/mainprogram.hh \
