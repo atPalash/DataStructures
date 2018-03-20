@@ -126,7 +126,7 @@ public:
 private:
     // Add stuff needed for your class implementation here
     std::map<TownID,TownData> town_list_;
-    std::vector<TownID> vec_town_list_;
+//    std::vector<TownID> vec_town_list_;
     std::multimap<TownID,TownData> alpha_town_list_;
     std::vector<TownID> alpha_town_vec_;
     std::multimap<int,TownData> dist_town_list_;

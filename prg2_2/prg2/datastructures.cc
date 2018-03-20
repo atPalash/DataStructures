@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
+
 std::minstd_rand rand_engine; // Reasonably quick pseudo-random generator
 
 template <typename Type>
@@ -38,6 +40,14 @@ unsigned int Datastructures::size()
 void Datastructures::clear()
 {
     // Replace with actual implementation
+    town_list_.clear();
+    alpha_town_list_.clear();
+    dist_town_list_.clear();
+    alpha_town_vec_.clear();
+    dist_town_vec_.clear();
+    dist_flag_ = false;
+    town_taxer_path_.clear();
+    town_vassal_path_.clear();
 }
 
 std::string Datastructures::get_name(TownID id)
@@ -70,9 +80,21 @@ int Datastructures::get_tax(TownID id)
 
 std::vector<TownID> Datastructures::get_vassals(TownID id)
 {
+    std::set<TownID> sorted_vassal_set;
+    std::vector<TownID> sorted_vassal_vec;
     std::map<TownID,TownData>::iterator it = town_list_.find(id);
     if(it != town_list_.end()){
-      return it->second.vassal_ids_;
+//        sorted_vassal_set(it->second.vassal_ids_.begin(),it->second.vassal_ids_.end());
+//        sorted_vassal_vec(sorted_vassal_set.begin(), sorted_vassal_set.end());
+//        return sorted_vassal_vec;
+//      return std::sort(it->second.vassal_ids_.begin(),it->second.vassal_ids_.end());
+      for(TownID vassal:it->second.vassal_ids_){
+        sorted_vassal_set.insert(vassal);
+      }
+      for(TownID vassal:sorted_vassal_set){
+        sorted_vassal_vec.push_back(vassal);
+      }
+      return sorted_vassal_vec;
     }
     return {NO_ID}; // Replace with actual implementation
 }
@@ -323,9 +345,10 @@ std::vector<TownID> Datastructures::taxer_path(TownID id)
       std::map<TownID,TownData>::iterator it_town = town_list_.find(id);
       if(it_town != town_list_.end()){
           town_taxer_path_.push_back(it_town->first);
-          town_taxer_path_.push_back(it_town->second.master_id_);
-          find_master_(it_town->second.master_id_);
-
+          if(it_town->second.master_id_ !=""){
+              town_taxer_path_.push_back(it_town->second.master_id_);
+              find_master_(it_town->second.master_id_);
+          }
       }
       return town_taxer_path_;
     }
@@ -406,4 +429,5 @@ int Datastructures::find_net_tax_(const TownID &town_id){
           return (int)floor(0.1*it_town->second.tax_);
         }
     }
+    return 0;
 }
