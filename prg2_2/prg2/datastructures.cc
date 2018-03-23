@@ -151,9 +151,16 @@ bool Datastructures::remove_town(TownID id)
         std::map<TownID,TownData>::iterator it = town_list_.find(id);
         if(it != town_list_.end()){
             if(it->second.master_id_!=""){
+              town_list_.find(it->second.master_id_)->
+                  second.vassal_ids_.erase(
+                    std::find(town_list_.find(it->second.master_id_)->
+                              second.vassal_ids_.begin(),
+                              town_list_.find(it->second.master_id_)->
+                              second.vassal_ids_.end(), id));
                 if(it->second.vassal_ids_.size()!=0){
                     for(TownID vassal:it->second.vassal_ids_){
                         town_list_.find(vassal)->second.master_id_ = it->second.master_id_;
+
                         town_list_.find(it->second.master_id_)->second.vassal_ids_.push_back(vassal);
                     }
                 }
@@ -274,7 +281,7 @@ TownID Datastructures::max_distance()
 
 TownID Datastructures::nth_distance(unsigned int n)
 {
-    if((dist_town_list_.size()!=0) && (n<dist_town_list_.size() && (n!=0))){
+    if((dist_town_list_.size()!=0) && (n<=dist_town_list_.size()) && (n!=0)){
       if (dist_flag_){
             return dist_town_vec_[n-1];
       }
@@ -361,10 +368,52 @@ std::vector<TownID> Datastructures::longest_vassal_path(TownID id)
     if(town_list_.size()!=0){
       std::map<TownID,TownData>::iterator it_town = town_list_.find(id);
       if(it_town != town_list_.end()){
-          town_vassal_path_.push_back(it_town->first);
+//          town_vassal_path_.push_back(it_town->first);
           find_vassal_(it_town->first);
       }
-      return town_vassal_path_;
+      std::vector<int> vassal_index;
+      for(int i=1; i < town_vassal_path_.size(); ++i){
+          auto it = find(it_town->second.vassal_ids_.begin(),
+                         it_town->second.vassal_ids_.end(), town_vassal_path_[i]);
+          if(it!=it_town->second.vassal_ids_.end()){
+              vassal_index.push_back(i);
+          }
+      }
+//      for(int j=0; j < vassal_index.size(); ++j){
+//          std::cerr << vassal_index[j] << std::endl;
+//      }
+      int index_low = 0;
+      int index_high = 0;
+      int temp_range = 0;
+      int range = 0;
+
+      for(int j=1; j < vassal_index.size(); ++j){
+          temp_range = vassal_index[j] - vassal_index[j-1];
+          if(temp_range>=range){
+              range = temp_range;
+              index_high = vassal_index[j];
+              index_low = vassal_index[j-1];
+          }
+      }
+
+      std::vector<TownID> long_vassal_path;
+      long_vassal_path.push_back(it_town->first);
+      if(vassal_index.size()>1){
+        for(int k = 0; k < town_vassal_path_.size(); ++k){
+          if(k>=index_low && k<index_high){
+//                sim_it =
+                if(std::find(long_vassal_path.begin(),long_vassal_path.end(),town_vassal_path_[k])==long_vassal_path.end()){
+                    long_vassal_path.push_back(town_vassal_path_[k]);
+                }
+              }
+          }
+      }
+      else{
+        for(int k = 1; k < town_vassal_path_.size(); ++k){
+            long_vassal_path.push_back(town_vassal_path_[k]);
+          }
+      }
+      return long_vassal_path;
     }
     return {}; // Replace with actual implementation
 }
@@ -401,11 +450,15 @@ void Datastructures::find_master_(TownID const& town_id){
 
 void Datastructures::find_vassal_(const TownID &town_id){
     if(town_id!=""){
+        town_vassal_path_.push_back(town_id);
         std::map<TownID,TownData>::iterator it_town = town_list_.find(town_id);
         if(it_town->second.vassal_ids_.size() != 0){
           for(TownID vassal: it_town->second.vassal_ids_){
-              town_vassal_path_.push_back(vassal);
+//              town_vassal_path_.push_back(vassal);
               find_vassal_(vassal);
+              if(it_town->second.vassal_ids_.size()>1){
+                town_vassal_path_.push_back(town_id);
+              }
           }
         }
     }
@@ -415,7 +468,7 @@ int Datastructures::find_net_tax_(const TownID &town_id){
     if(town_id!=""){
         std::map<TownID, TownData>::iterator it_town = town_list_.find(town_id);
         if(it_town->second.vassal_ids_.size() != 0){
-          std::cerr << it_town->second.name_ << std::endl;
+//          std::cerr << it_town->second.name_ << std::endl;
           int town_tax = it_town->second.tax_;
           int total_tax_from_vassal = 0;
           for(TownID vassal: it_town->second.vassal_ids_){
